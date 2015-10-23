@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author       = { "Alex Leite" => "admin@al7dev.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/al7/DashView.git", :tag => "0.0.1s" }
+  s.source       = { :git => "https://github.com/al7/DashView.git", :tag => "0.0.1" }
   s.source_files = "DashView/Source", "DashView/Source/**/*.{h,m,swift}"
   s.requires_arc = true
 
