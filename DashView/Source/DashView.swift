@@ -24,33 +24,34 @@ THE SOFTWARE.
 
 import UIKit
 
-@IBDesignable public class DashView: UIView {
-    @IBInspectable public var dashWidth: CGFloat = 3.0
-    @IBInspectable public var dashSpace: CGFloat = 1.0
-    @IBInspectable public var dashColor: UIColor = UIColor.darkGrayColor()
+@IBDesignable open class DashView: UIView {
+    @IBInspectable open var dashWidth: CGFloat = 3.0
+    @IBInspectable open var dashSpace: CGFloat = 1.0
+    @IBInspectable open var dashColor: UIColor = UIColor.darkGray
     
     //MARK- Initializers
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
     //MARK- Base Overrides
     
-    public override func drawRect(rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, self.dashColor.CGColor)
-        
-        var nextDashFrame = CGRect(x: 0.0, y: 0.0, width: self.dashWidth, height: rect.size.height)
-        while nextDashFrame.origin.x < rect.size.width {
-            CGContextFillRect(context, nextDashFrame)
-            nextDashFrame.origin.x += (self.dashWidth + self.dashSpace)
+    open override func draw(_ rect: CGRect) {
+        if let context = UIGraphicsGetCurrentContext() {
+            context.setFillColor(self.dashColor.cgColor)
+            
+            var nextDashFrame = CGRect(x: 0.0, y: 0.0, width: self.dashWidth, height: rect.size.height)
+            while nextDashFrame.origin.x < rect.size.width {
+                context.fill(nextDashFrame)
+                nextDashFrame.origin.x += (self.dashWidth + self.dashSpace)
+            }
         }
     }
 }
