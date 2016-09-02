@@ -45,11 +45,11 @@ import UIKit
     
     public override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, self.dashColor.CGColor)
+        CGContextSetFillColorWithColor(context!, self.dashColor.CGColor)
         
         var nextDashFrame = CGRect(x: 0.0, y: 0.0, width: self.dashWidth, height: rect.size.height)
         while nextDashFrame.origin.x < rect.size.width {
-            CGContextFillRect(context, nextDashFrame)
+            CGContextFillRect(context!, nextDashFrame)
             nextDashFrame.origin.x += (self.dashWidth + self.dashSpace)
         }
     }
